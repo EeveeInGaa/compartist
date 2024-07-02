@@ -1,0 +1,11 @@
+:host {
+  position: relative;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}

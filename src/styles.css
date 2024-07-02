@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --comp-font-family: 'Montserrat', 'Helevetika Neue', sans-serif;
+  --comp-dark-color-rgb: 0, 0, 0;
+  --comp-light-color-rgb: 255, 255, 255;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: var(--comp-font-family);
+  color: rgb(var(--comp-dark-color-rgb));
+  background: rgb(var(--comp-light-color-rgb));
+  height: 100svh;
+  overflow: hidden;
+}
