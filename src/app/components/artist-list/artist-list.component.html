@@ -2,6 +2,7 @@
 <ul>
   @for (item of items; track item.id) {
     <li>
+      <p>{{ item.name }}</p>
       <app-list-item></app-list-item>
     </li>
   }

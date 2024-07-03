@@ -9,7 +9,7 @@ export const routes: Routes = [
   {
     path: 'artist-list',
     loadComponent: () =>
-      import('./artist-list/artist-list.component').then(
+      import('./components/artist-list/artist-list.component').then(
         (m) => m.ArtistListComponent,
       ),
     /*children: [
@@ -25,14 +25,14 @@ export const routes: Routes = [
   {
     path: 'compare-artists',
     loadComponent: () =>
-      import('./compare-artists/compare-artists.component').then(
+      import('./components/compare-artists/compare-artists.component').then(
         (m) => m.CompareArtistsComponent,
       ),
   },
   {
     path: '**',
     loadComponent: () =>
-      import('./not-found-page/not-found-page.component').then(
+      import('./components/not-found-page/not-found-page.component').then(
         (m) => m.NotFoundPageComponent,
       ),
   },

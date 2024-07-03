@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ListItemComponent } from '../list-item/list-item.component';
 import { SelectComponent } from '../select/select.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-artist-list',
   standalone: true,
   imports: [RouterLink, ListItemComponent, SelectComponent],
+  providers: [HttpClient],
   templateUrl: './artist-list.component.html',
   styleUrl: './artist-list.component.css',
 })
