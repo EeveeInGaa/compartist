@@ -1,0 +1,11 @@
+:host {
+  position: relative;
+}
+
+ol {
+  list-style-type: none;
+}
+
+li + li {
+  margin-top: 1rem;
+}

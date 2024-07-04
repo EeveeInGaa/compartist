@@ -1,12 +1,20 @@
-@if (artist()) {
-  <p>{{ artist()!.name }}</p>
-  <p>{{ artist()!.listeners | number: '' : 'en-US' }}</p>
-  <p>{{ artist()!.url }}</p>
-  <p>{{ artist()!.streamable }}</p>
-  <img
-    [src]="artist()!.image[2]['#text'] ? artist()!.image[0]['#text'] : ''"
-    alt="artist-image"
-  />
-} @else {
-  <p>no data coming</p>
-}
+<app-card>
+  @if (artist()) {
+    <div start class="start-wrapper">
+      <p>{{ number() }}.</p>
+      <img
+        [src]="artist()!.image[2]['#text'] ? artist()!.image[2]['#text'] : ''"
+        alt="artist-image"
+      />
+    </div>
+    <div class="wrapper">
+      <h1>{{ artist()!.name }}</h1>
+      <div class="inner-wrapper">
+        <p>{{ artist()!.listeners | number: '' : 'en-US' }} Listeners</p>
+        <a [href]="artist()!.url">&#9432;</a>
+      </div>
+    </div>
+  } @else {
+    <p>no data coming</p>
+  }
+</app-card>

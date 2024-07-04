@@ -14,12 +14,10 @@
   </ul>
 </div>
 
-<hr />
-
-<ul>
+<ol>
   @for (artist of artists(); track artist.mbid) {
     <li>
-      <app-list-item [artist]="artist"></app-list-item>
+      <app-list-item [artist]="artist" [number]="$index + 1"></app-list-item>
     </li>
   }
-</ul>
+</ol>

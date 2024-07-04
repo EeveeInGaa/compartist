@@ -13,8 +13,11 @@
 html,
 body {
   font-family: var(--comp-font-family);
+  font-size: 100%;
   color: rgb(var(--comp-dark-color-rgb));
   background: rgb(var(--comp-light-color-rgb));
   height: 100svh;
-  overflow: hidden;
+  min-height: 100%;
+  width: 100%;
+  overflow-y: scroll;
 }
