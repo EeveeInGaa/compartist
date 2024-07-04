@@ -5,7 +5,7 @@
   [value]="selectedCountry()"
   (change)="onSelectCountry($event)"
 >
-  @for (country of countries(); track country) {
-    <option [value]="country">{{ country }}</option>
+  @for (country of countries(); track country.countryCode) {
+    <option [value]="country.countryName">{{ country.countryName }}</option>
   }
 </select>

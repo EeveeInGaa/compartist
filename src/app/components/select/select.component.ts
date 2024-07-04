@@ -1,5 +1,6 @@
 import { Component, input, OnInit, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Countries } from '../../interfaces/countries.interface';
 
 @Component({
   selector: 'app-select',
@@ -10,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class SelectComponent {
   selectedCountry = input.required<string>();
-  countries = input.required<string[]>();
+  countries = input.required<Countries[]>();
   selectCountry = output<string>();
 
   onSelectCountry(event: Event): void {

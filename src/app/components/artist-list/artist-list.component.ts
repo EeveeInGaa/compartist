@@ -12,6 +12,11 @@ import { SelectComponent } from '../select/select.component';
 import { HttpClient } from '@angular/common/http';
 import { ArtistsService } from '../../services/artists.service';
 import { Artist } from '../../interfaces/artist.interface';
+import { Countries } from '../../interfaces/countries.interface';
+import {
+  AvailableCountriesEnum,
+  AvailableCountryCodesEnum,
+} from '../../enums/available-countries.enum';
 
 @Component({
   selector: 'app-artist-list',
@@ -24,11 +29,26 @@ import { Artist } from '../../interfaces/artist.interface';
 export class ArtistListComponent implements OnInit {
   private artistService = inject(ArtistsService);
 
-  private _artists = signal<Artist[]>([]);
-  artists = computed(() => this._artists());
+  readonly AvailableCountries = AvailableCountriesEnum;
+  readonly AvailableCountryCodes = AvailableCountryCodesEnum;
 
-  countries = signal<string[]>(['germany', 'norway', 'sweden']);
-  selectedCountry = signal<string>(this.countries()[0]);
+  readonly artists = signal<Artist[]>([]);
+
+  countries = signal<Countries[]>([
+    {
+      countryCode: this.AvailableCountryCodes.Ger,
+      countryName: this.AvailableCountries.Germany,
+    },
+    {
+      countryCode: this.AvailableCountryCodes.Nor,
+      countryName: this.AvailableCountries.Norway,
+    },
+    {
+      countryCode: this.AvailableCountryCodes.Swe,
+      countryName: this.AvailableCountries.Sweden,
+    },
+  ]);
+  selectedCountry = signal<string>(this.countries()[0].countryCode);
 
   selectCountry(country: string) {
     this.selectedCountry.set(country);
@@ -40,7 +60,7 @@ export class ArtistListComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           const topTenArtists = response.topartists.artist.slice(0, 10);
-          this._artists.set(topTenArtists);
+          this.artists.set(topTenArtists);
         },
       });
   }
