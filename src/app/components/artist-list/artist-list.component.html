@@ -1,9 +1,25 @@
 <app-select></app-select>
+<div>
+  <div class="selected-country">
+    {{ selectedCountry() }}
+  </div>
+  <br />
+
+  <ul>
+    @for (country of filteredCountries(); track country) {
+      <li (click)="selectCountry(country)">
+        {{ country }}
+      </li>
+    }
+  </ul>
+</div>
+
+<hr />
+
 <ul>
-  @for (item of items; track item.id) {
+  @for (artist of artists(); track artist.mbid) {
     <li>
-      <p>{{ item.name }}</p>
-      <app-list-item></app-list-item>
+      <app-list-item [artist]="artist"></app-list-item>
     </li>
   }
 </ul>

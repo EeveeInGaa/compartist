@@ -1,1 +1,12 @@
-<p>list-item works!</p>
+@if (artist()) {
+  <p>{{ artist()!.name }}</p>
+  <p>{{ artist()!.listeners | number: '' : 'en-US' }}</p>
+  <p>{{ artist()!.url }}</p>
+  <p>{{ artist()!.streamable }}</p>
+  <img
+    [src]="artist()!.image[2]['#text'] ? artist()!.image[0]['#text'] : ''"
+    alt="artist-image"
+  />
+} @else {
+  <p>no data coming</p>
+}

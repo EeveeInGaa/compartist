@@ -1,4 +1,4 @@
 export interface ArtistImage {
-  text: string;
+  '#text': string;
   size: string;
 }
