@@ -25,18 +25,14 @@ export class ArtistListComponent implements OnInit {
   private artistService = inject(ArtistsService);
 
   private _artists = signal<Artist[]>([]);
-  countries = signal<string[]>(['norway', 'sweden', 'germany']);
-  selectedCountry = signal<string>('germany');
+  artists = computed(() => this._artists());
 
-  filteredCountries = computed(() =>
-    this.countries().filter((c) => c !== this.selectedCountry()),
-  );
+  countries = signal<string[]>(['germany', 'norway', 'sweden']);
+  selectedCountry = signal<string>(this.countries()[0]);
 
   selectCountry(country: string) {
     this.selectedCountry.set(country);
   }
-
-  artists = computed(() => this._artists());
 
   ngOnInit() {
     this.artistService

@@ -1,18 +1,8 @@
-<app-select></app-select>
-<div>
-  <div class="selected-country">
-    {{ selectedCountry() }}
-  </div>
-  <br />
-
-  <ul>
-    @for (country of filteredCountries(); track country) {
-      <li (click)="selectCountry(country)">
-        {{ country }}
-      </li>
-    }
-  </ul>
-</div>
+<app-select
+  [selectedCountry]="selectedCountry()"
+  [countries]="countries()"
+  (selectCountry)="selectCountry($event)"
+></app-select>
 
 <ol>
   @for (artist of artists(); track artist.mbid) {

@@ -1,1 +1,11 @@
-<p>select works!</p>
+<label for="country-select">Choose a country:</label>
+<select
+  name="countries"
+  id="country-select"
+  [value]="selectedCountry()"
+  (change)="onSelectCountry($event)"
+>
+  @for (country of countries(); track country) {
+    <option [value]="country">{{ country }}</option>
+  }
+</select>
