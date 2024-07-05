@@ -1,1 +1,8 @@
-<p>search works!</p>
+<label for="search-artist">Search for an artist: </label>
+
+<input
+  id="search-artist"
+  type="text"
+  name="search"
+  (input)="onSearch($event)"
+/>

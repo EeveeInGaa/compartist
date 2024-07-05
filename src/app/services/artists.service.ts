@@ -16,4 +16,10 @@ export class ArtistsService {
       `${this.baseUrl}/?method=geo.gettopartists&country=${country}&api_key=${this.apiKey}&format=json`,
     );
   }
+
+  getArtistsBySearching(term: string) {
+    return this.httpClient.get(
+      `${this.baseUrl}/?method=artist.search&artist=${term}&api_key=${this.apiKey}&format=json`,
+    );
+  }
 }

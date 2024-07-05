@@ -5,7 +5,7 @@
 ></app-select>
 
 <ol>
-  @for (artist of artists(); track artist.mbid) {
+  @for (artist of artists(); track artist.name) {
     <li>
       <app-list-item [artist]="artist" [number]="$index + 1"></app-list-item>
     </li>
