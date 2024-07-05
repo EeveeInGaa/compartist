@@ -1,6 +1,8 @@
 import {
   Component,
   computed,
+  DestroyRef,
+  effect,
   inject,
   input,
   OnInit,
@@ -17,6 +19,7 @@ import {
   AvailableCountriesEnum,
   AvailableCountryCodesEnum,
 } from '../../enums/available-countries.enum';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-artist-list',
@@ -26,8 +29,9 @@ import {
   templateUrl: './artist-list.component.html',
   styleUrl: './artist-list.component.css',
 })
-export class ArtistListComponent implements OnInit {
+export class ArtistListComponent {
   private artistService = inject(ArtistsService);
+  private destroyRef = inject(DestroyRef);
 
   readonly AvailableCountries = AvailableCountriesEnum;
   readonly AvailableCountryCodes = AvailableCountryCodesEnum;
@@ -54,14 +58,15 @@ export class ArtistListComponent implements OnInit {
     this.selectedCountry.set(country);
   }
 
-  ngOnInit() {
+  readonly getTopArtistsByCountry = effect(() => {
     this.artistService
       .getTopArtistsByCountry(this.selectedCountry())
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (response: any) => {
           const topTenArtists = response.topartists.artist.slice(0, 10);
           this.artists.set(topTenArtists);
         },
       });
-  }
+  });
 }
