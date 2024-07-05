@@ -1,12 +1,6 @@
 <header>
   <a routerLink="/">Compartist</a>
   <app-search (searchValue)="typeSearchTerm($event)"></app-search>
-  <div>
-    <p>Artists:</p>
-    @for (artist of foundArtists(); track artist.name) {
-      <p>{{ artist.name }}</p>
-    }
-  </div>
   <nav>
     <a routerLink="/compare-artists">compare</a>
   </nav>

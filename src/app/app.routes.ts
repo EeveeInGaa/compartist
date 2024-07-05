@@ -30,6 +30,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'search-results',
+    loadComponent: () =>
+      import('./components/search-results/search-results.component').then(
+        (m) => m.SearchResultsComponent,
+      ),
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./components/not-found-page/not-found-page.component').then(

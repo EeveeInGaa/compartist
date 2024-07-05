@@ -1,37 +1,28 @@
-import { Component, DestroyRef, effect, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
-import { RouterLink } from '@angular/router';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ArtistsService } from '../../services/artists.service';
-import { Artist } from '../../interfaces/artist.interface';
+import { Router, RouterLink } from '@angular/router';
+import { SearchResultsComponent } from '../search-results/search-results.component';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [SearchComponent, RouterLink],
+  imports: [SearchComponent, RouterLink, SearchResultsComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  private artistService = inject(ArtistsService);
-  private destroyRef = inject(DestroyRef);
-
-  readonly searchTerm = signal<string>('');
-  readonly foundArtists = signal<Artist[]>([]);
+  private searchService = inject(SearchService);
+  private router = inject(Router);
 
   typeSearchTerm(term: string) {
-    this.searchTerm.set(term);
-  }
-
-  readonly searchArtist = effect(() => {
-    this.artistService
-      .getArtistsBySearching(this.searchTerm())
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (res: any) => {
-          const found = res.results.artistmatches.artist.slice(0, 10);
-          this.foundArtists.set(found);
-        },
+    if (term.trim() === '') {
+      this.router.navigate(['/']);
+    } else {
+      this.searchService.setSearchTerm(term);
+      this.router.navigate(['/search-results'], {
+        queryParams: { term: term },
       });
-  });
+    }
+  }
 }
