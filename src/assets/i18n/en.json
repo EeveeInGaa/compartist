@@ -1,4 +1,13 @@
 {
-  "language":  "Language",
-  "changeLang": "Change to"
+  "compare":  "Comparison",
+  "listeners":  "Listeners",
+  "no-data":  "No are are coming.",
+  "search-artist":  "Search for an artist",
+  "search-results":  "Search Results",
+  "Germany": "Germany",
+  "Norway":"Norway",
+  "Sweden": "Sweden",
+  "page-not-found":  "Page not found",
+  "back-to-main-page":  "Go back to the Artist List.",
+  "footer-text": "Made with passion and"
 }

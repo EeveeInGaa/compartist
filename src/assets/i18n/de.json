@@ -1,4 +1,13 @@
 {
-  "language":  "Sprache",
-  "changeLang": "Ändere zu"
+  "compare":  "Vergleich",
+  "listeners":  "Zuhörer",
+  "no-data":  "Keine Daten erhalten.",
+  "search-artist":  "Suche nach Künstler",
+  "search-results":  "Suchergebnisse",
+  "Germany": "Deutschland",
+  "Norway":"Norwegen",
+  "Sweden": "Schweden",
+  "page-not-found":  "Seite nicht gefunden",
+  "back-to-main-page":  "Gehe zurück zur Künstlerliste",
+  "footer-text": "Erstellt mit Leidenschaft und"
 }

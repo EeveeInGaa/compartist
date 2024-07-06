@@ -10,11 +10,14 @@
     <div class="wrapper">
       <h1>{{ artist()!.name }}</h1>
       <div class="inner-wrapper">
-        <p>{{ artist()!.listeners | number: '' : 'en-US' }} Listeners</p>
+        <p>
+          {{ artist()!.listeners | number: '' : 'en-US' }}
+          {{ 'listeners' | transloco }}
+        </p>
         <a [href]="artist()!.url">&#9432;</a>
       </div>
     </div>
   } @else {
-    <p>no data coming</p>
+    <p>{{ 'no-data' | transloco }}</p>
   }
 </app-card>

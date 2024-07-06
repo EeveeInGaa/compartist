@@ -20,17 +20,19 @@ import {
   AvailableCountryCodesEnum,
 } from '../../enums/available-countries.enum';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-artist-list',
   standalone: true,
-  imports: [RouterLink, ListItemComponent, SelectComponent],
-  providers: [HttpClient],
+  imports: [RouterLink, ListItemComponent, SelectComponent, TranslocoPipe],
+  providers: [HttpClient, TranslocoPipe],
   templateUrl: './artist-list.component.html',
   styleUrl: './artist-list.component.css',
 })
 export class ArtistListComponent {
   private artistService = inject(ArtistsService);
+  private translocoService = inject(TranslocoService);
   private destroyRef = inject(DestroyRef);
 
   readonly AvailableCountries = AvailableCountriesEnum;
@@ -41,15 +43,21 @@ export class ArtistListComponent {
   countries = signal<Countries[]>([
     {
       countryCode: this.AvailableCountryCodes.Ger,
-      countryName: this.AvailableCountries.Germany,
+      countryName: this.translocoService.translate(
+        `${this.AvailableCountries.Germany}`,
+      ),
     },
     {
       countryCode: this.AvailableCountryCodes.Nor,
-      countryName: this.AvailableCountries.Norway,
+      countryName: this.translocoService.translate(
+        `${this.AvailableCountries.Norway}`,
+      ),
     },
     {
       countryCode: this.AvailableCountryCodes.Swe,
-      countryName: this.AvailableCountries.Sweden,
+      countryName: this.translocoService.translate(
+        `${this.AvailableCountries.Sweden}`,
+      ),
     },
   ]);
   selectedCountry = signal<string>(this.countries()[0].countryCode);

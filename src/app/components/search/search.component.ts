@@ -1,9 +1,10 @@
 import { Component, input, output } from '@angular/core';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [],
+  imports: [TranslocoPipe],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })

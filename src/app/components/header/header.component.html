@@ -2,9 +2,8 @@
   <a routerLink="/">Compartist</a>
   <app-search (searchValue)="typeSearchTerm($event)"></app-search>
   <nav>
-    <a routerLink="/compare-artists">compare</a>
+    <a routerLink="/compare-artists">{{ 'compare' | transloco }}</a>
   </nav>
-  <p>{{ 'language' | transloco }}</p>
   <div>
     @for (lang of availableLanguages(); track lang) {
       <button
