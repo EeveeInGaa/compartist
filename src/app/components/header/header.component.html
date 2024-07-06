@@ -4,5 +4,15 @@
   <nav>
     <a routerLink="/compare-artists">compare</a>
   </nav>
-  <p>language</p>
+  <p>{{ 'language' | transloco }}</p>
+  <div>
+    @for (lang of availableLanguages(); track lang) {
+      <button
+        (click)="changeLanguage(lang.toString())"
+        [disabled]="currentLanguage() === lang.toString()"
+      >
+        {{ lang.toString().toUpperCase() }}
+      </button>
+    }
+  </div>
 </header>
