@@ -36,6 +36,10 @@ a {
   cursor: pointer;
 }
 
+h1 {
+  font-size: 1.5rem;
+}
+
 .container {
   width: 100%;
   margin-right: auto;
@@ -44,6 +48,9 @@ a {
   padding-left: 1rem;
 }
 @media (min-width: 1200px) {
+  h1 {
+    font-size: 2rem;
+  }
   .container {
     max-width: 1200px;
   }
