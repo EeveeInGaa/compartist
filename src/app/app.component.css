@@ -7,3 +7,7 @@
 .grow {
   flex-grow: 1;
 }
+
+.top-spacing {
+  margin-top: 1rem;
+}

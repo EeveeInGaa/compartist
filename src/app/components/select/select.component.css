@@ -9,4 +9,13 @@ select {
   width: fit-content;
   padding: 0.3rem 0.6rem;
   border-radius: 0.5rem;
+  background: #e5e7f8;
+  color: #51546f;
+}
+
+@media (prefers-color-scheme: dark) {
+  select {
+    color: #e5e7f8;
+    background: #51546f;
+  }
 }
