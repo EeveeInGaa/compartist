@@ -1,5 +1,8 @@
 <header>
-  <a routerLink="/">Compartist</a>
+  <a href="/">
+    <app-logo class="logo"></app-logo>
+  </a>
+
   <app-search (searchValue)="typeSearchTerm($event)"></app-search>
   <nav>
     <a routerLink="/compare-artists">{{ 'compare' | transloco }}</a>

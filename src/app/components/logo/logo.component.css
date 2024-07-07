@@ -1,0 +1,14 @@
+:host {
+  position: relative;
+}
+
+@media (prefers-color-scheme: dark) {
+  svg path {
+    fill: white;
+  }
+}
+svg {
+  width: auto;
+  height: 60px;
+  padding: 10px 0;
+}

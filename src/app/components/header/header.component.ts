@@ -9,6 +9,7 @@ import {
   TranslocoService,
 } from '@jsverse/transloco';
 import { Artist } from '../../interfaces/artist.interface';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,7 @@ import { Artist } from '../../interfaces/artist.interface';
     SearchResultsComponent,
     TranslocoPipe,
     TranslocoDirective,
+    LogoComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

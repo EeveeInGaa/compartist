@@ -1,6 +1,7 @@
 :root {
   --comp-font-family: 'Montserrat', 'Helevetika Neue', sans-serif;
   --comp-dark-color-rgb: 0, 0, 0;
+  --comp-dark-background-rgb: 47, 49, 56;
   --comp-light-color-rgb: 255, 255, 255;
 }
 
@@ -13,11 +14,38 @@
 html,
 body {
   font-family: var(--comp-font-family);
-  font-size: 100%;
+  font-size: 16px;
   color: rgb(var(--comp-dark-color-rgb));
   background: rgb(var(--comp-light-color-rgb));
   height: 100svh;
   min-height: 100%;
   width: 100%;
   overflow-y: scroll;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background: rgb(var(--comp-dark-background-rgb));
+    color: rgb(var(--comp-light-color-rgb));
+  }
+}
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
 }
