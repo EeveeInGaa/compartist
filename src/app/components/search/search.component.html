@@ -1,8 +1,7 @@
-<label for="search-artist">{{ 'search-artist' | transloco }}: </label>
-
 <input
-  id="search-artist"
   type="text"
   name="search"
+  [attr.aria-label]="'search-artist' | transloco"
+  [placeholder]="'search-artist' | transloco"
   (input)="onSearch($event)"
 />

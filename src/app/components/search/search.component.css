@@ -1,0 +1,27 @@
+:host {
+  position: relative;
+}
+
+input {
+  all: unset;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  background: darkslateblue;
+  color: white;
+  height: 2rem;
+}
+
+input::placeholder {
+  color: #e5e7f8;
+}
+
+@media (prefers-color-scheme: dark) {
+  input {
+    background: aliceblue;
+    color: black;
+  }
+
+  input::placeholder {
+    color: darkslateblue;
+  }
+}
