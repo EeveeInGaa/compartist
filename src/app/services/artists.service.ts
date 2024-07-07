@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root',
 })
 export class ArtistsService {
-  baseUrl = 'http://ws.audioscrobbler.com/2.0';
+  baseUrl = 'https://ws.audioscrobbler.com/2.0';
 
   private apiKey = environment.API_KEY;
   private httpClient = inject(HttpClient);
