@@ -9,6 +9,7 @@ input {
   background: darkslateblue;
   color: white;
   height: 2rem;
+  width: 5rem;
 }
 
 input::placeholder {
@@ -23,5 +24,11 @@ input::placeholder {
 
   input::placeholder {
     color: darkslateblue;
+  }
+}
+
+@media (min-width: 720px) {
+  input {
+    width: 10rem;
   }
 }

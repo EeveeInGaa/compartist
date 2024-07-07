@@ -7,9 +7,23 @@
     fill: white;
   }
 }
+
 svg {
   width: auto;
-  height: 60px;
+  height: 40px;
   padding: 10px 0;
-  margin: 0 1rem;
+  margin: 0 0.3rem;
+}
+
+@media (min-width: 720px) {
+  svg {
+    height: 50px;
+    margin: 0 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  svg {
+    height: 60px;
+  }
 }

@@ -1,0 +1,21 @@
+:host {
+  position: relative;
+  text-align: center;
+}
+
+footer {
+  background: #f9f9ff;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  padding: 1rem 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  footer {
+    background: #2a2b33;
+  }
+}
+
+span {
+  color: crimson;
+}

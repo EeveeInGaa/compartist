@@ -1,0 +1,14 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li + li {
+  margin-top: 1rem;
+}
