@@ -14,7 +14,16 @@
           {{ artist()!.listeners | number: '' : 'en-US' }}
           {{ 'listeners' | transloco }}
         </p>
-        <a [href]="artist()!.url">&#9432;</a>
+        <ng-container *transloco="let t">
+          <a
+            [href]="artist()!.url"
+            rel="noopener noreferrer"
+            target="_blank"
+            [title]="t('link-to-artist', { artist: artist()?.name })"
+            [attr.aria-label]="t('link-to-artist', { artist: artist()?.name })"
+            >&#9432;</a
+          >
+        </ng-container>
       </div>
     </div>
   } @else {

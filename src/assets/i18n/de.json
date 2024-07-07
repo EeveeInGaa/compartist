@@ -7,7 +7,8 @@
   "Germany": "Deutschland",
   "Norway":"Norwegen",
   "Sweden": "Schweden",
+  "link-to-artist": "Link zur Last.fm Seite von {{artist}}",
   "page-not-found":  "Seite nicht gefunden",
-  "back-to-main-page":  "Gehe zurück zur Künstlerliste",
+  "go-to-main-page":  "Gehe zur Künstlerliste",
   "footer-text": "Erstellt mit Leidenschaft und"
 }
