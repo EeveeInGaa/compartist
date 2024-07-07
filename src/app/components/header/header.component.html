@@ -4,17 +4,18 @@
   </a>
 
   <app-search (searchValue)="typeSearchTerm($event)"></app-search>
-  <nav>
-    <a routerLink="/compare-artists">{{ 'compare' | transloco }}</a>
-  </nav>
-  <div>
+  <div class="language-buttons-wrapper">
     @for (lang of availableLanguages(); track lang) {
       <button
+        class="language-button"
         (click)="changeLanguage(lang.toString())"
         [disabled]="currentLanguage() === lang.toString()"
       >
         {{ lang.toString().toUpperCase() }}
       </button>
+      @if ($index < availableLanguages().length - 1) {
+        <div class="language-separator">/</div>
+      }
     }
   </div>
 </header>

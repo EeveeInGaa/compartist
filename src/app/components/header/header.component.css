@@ -9,3 +9,39 @@ header {
   justify-content: space-between;
   gap: 4rem;
 }
+
+.language-buttons-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+}
+
+.language-button {
+  all: unset;
+  background: transparent;
+  color: black;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.language-button:hover {
+  background: #e5e7f8;
+}
+
+.language-button:disabled {
+  color: #9b9b9b;
+}
+
+.language-separator {
+  padding: 0 0.3rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .language-button {
+    color: white;
+  }
+  .language-button:hover {
+    background: #51546f;
+  }
+}
