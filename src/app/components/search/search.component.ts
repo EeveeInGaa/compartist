@@ -9,10 +9,13 @@ import { TranslocoPipe } from '@jsverse/transloco';
   styleUrl: './search.component.css',
 })
 export class SearchComponent {
-  searchValue = output<string>();
+  readonly searchValue = output<string>();
 
   onSearch(event: Event) {
     const value = (event.target as HTMLInputElement).value;
+    if (value === undefined || value === null) {
+      console.error('No value provided');
+    }
     this.searchValue.emit(value);
   }
 }

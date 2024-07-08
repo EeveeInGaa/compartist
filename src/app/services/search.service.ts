@@ -14,15 +14,17 @@ export class SearchService {
   readonly foundArtists = signal<Artist[]>([]);
 
   readonly foundArtistsSubscription = effect(() => {
-    this.artistService
-      .getArtistsBySearching(this.searchTerm())
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (res: any) => {
-          const found = res.results.artistmatches.artist.slice(0, 10);
-          this.foundArtists.set(found);
-        },
-      });
+    if (this.searchTerm() !== '') {
+      this.artistService
+        .getArtistsBySearching(this.searchTerm())
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe({
+          next: (res) => {
+            const found = res.results.artistmatches.artist.slice(0, 10);
+            this.foundArtists.set(found);
+          },
+        });
+    }
   });
 
   setSearchTerm(term: string) {
