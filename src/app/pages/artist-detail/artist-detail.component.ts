@@ -8,8 +8,8 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ArtistsService } from '../../services/artists.service';
-import { LastFMArtistGetInfoResponse } from '../../interfaces/artist.interface';
+import { ArtistsService } from '../../utils/services/artists.service';
+import { LastFMArtistGetInfoResponse } from '../../utils/interfaces/artist.interface';
 import { ActivatedRoute } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { TranslocoPipe } from '@jsverse/transloco';

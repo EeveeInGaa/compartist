@@ -6,8 +6,8 @@ import {
 } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
 import { Router, RouterLink } from '@angular/router';
-import { SearchResultsComponent } from '../search-results/search-results.component';
-import { SearchService } from '../../services/search.service';
+import { SearchResultsComponent } from '../../pages/search-results/search-results.component';
+import { SearchService } from '../../utils/services/search.service';
 import {
   TranslocoDirective,
   TranslocoPipe,

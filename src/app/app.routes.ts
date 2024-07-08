@@ -9,28 +9,28 @@ export const routes: Routes = [
   {
     path: 'artist-list',
     loadComponent: () =>
-      import('./components/artist-list/artist-list.component').then(
+      import('./pages/artist-list/artist-list.component').then(
         (m) => m.ArtistListComponent,
       ),
   },
   {
     path: 'artist-list/detail/:name',
     loadComponent: () =>
-      import('./components/artist-detail/artist-detail.component').then(
+      import('./pages/artist-detail/artist-detail.component').then(
         (m) => m.ArtistDetailComponent,
       ),
   },
   {
     path: 'search-results',
     loadComponent: () =>
-      import('./components/search-results/search-results.component').then(
+      import('./pages/search-results/search-results.component').then(
         (m) => m.SearchResultsComponent,
       ),
   },
   {
     path: '**',
     loadComponent: () =>
-      import('./components/not-found-page/not-found-page.component').then(
+      import('./pages/not-found-page/not-found-page.component').then(
         (m) => m.NotFoundPageComponent,
       ),
   },

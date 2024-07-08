@@ -5,7 +5,7 @@ import {
   output,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Countries } from '../../interfaces/countries.interface';
+import { Countries } from '../../utils/interfaces/countries.interface';
 
 @Component({
   selector: 'ca-select',

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ListItemComponent } from '../list-item/list-item.component';
-import { SearchService } from '../../services/search.service';
+import { ListItemComponent } from '../../components/list-item/list-item.component';
+import { SearchService } from '../../utils/services/search.service';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { Router } from '@angular/router';
 

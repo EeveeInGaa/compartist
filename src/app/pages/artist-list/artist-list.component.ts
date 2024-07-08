@@ -7,16 +7,16 @@ import {
   signal,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { ListItemComponent } from '../list-item/list-item.component';
-import { SelectComponent } from '../select/select.component';
+import { ListItemComponent } from '../../components/list-item/list-item.component';
+import { SelectComponent } from '../../components/select/select.component';
 import { HttpClient } from '@angular/common/http';
-import { ArtistsService } from '../../services/artists.service';
-import { Artist } from '../../interfaces/artist.interface';
-import { Countries } from '../../interfaces/countries.interface';
+import { ArtistsService } from '../../utils/services/artists.service';
+import { Artist } from '../../utils/interfaces/artist.interface';
+import { Countries } from '../../utils/interfaces/countries.interface';
 import {
   AvailableCountriesEnum,
   AvailableCountryCodesEnum,
-} from '../../enums/available-countries.enum';
+} from '../../utils/enums/available-countries.enum';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
