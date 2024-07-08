@@ -1,6 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
+import {
+  LastFMArtistSearchResponse,
+  LastFMGeoGetTopArtistsResponse,
+} from '../interfaces/artist.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +16,13 @@ export class ArtistsService {
   private httpClient = inject(HttpClient);
 
   getTopArtistsByCountry(country: string) {
-    return this.httpClient.get(
+    return this.httpClient.get<LastFMGeoGetTopArtistsResponse>(
       `${this.baseUrl}/?method=geo.gettopartists&country=${country}&api_key=${this.apiKey}&format=json`,
     );
   }
 
   getArtistsBySearching(term: string) {
-    return this.httpClient.get(
+    return this.httpClient.get<LastFMArtistSearchResponse>(
       `${this.baseUrl}/?method=artist.search&artist=${term}&api_key=${this.apiKey}&format=json`,
     );
   }
