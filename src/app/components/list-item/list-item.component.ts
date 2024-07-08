@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Artist } from '../../interfaces/artist.interface';
 import { DecimalPipe } from '@angular/common';
 import { CardComponent } from '../card/card.component';

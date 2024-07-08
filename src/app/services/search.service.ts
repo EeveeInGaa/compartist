@@ -2,7 +2,7 @@ import { DestroyRef, effect, inject, Injectable, signal } from '@angular/core';
 import { ArtistsService } from './artists.service';
 import { Artist } from '../interfaces/artist.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { debounceTime, tap } from 'rxjs';
+import { debounceTime } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

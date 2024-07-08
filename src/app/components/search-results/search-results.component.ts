@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ListItemComponent } from '../list-item/list-item.component';
 import { SearchService } from '../../services/search.service';
 import { TranslocoPipe } from '@jsverse/transloco';

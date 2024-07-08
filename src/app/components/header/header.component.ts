@@ -13,7 +13,6 @@ import {
   TranslocoPipe,
   TranslocoService,
 } from '@jsverse/transloco';
-import { Artist } from '../../interfaces/artist.interface';
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({

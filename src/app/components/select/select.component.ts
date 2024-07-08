@@ -2,9 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   input,
-  OnInit,
   output,
-  signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Countries } from '../../interfaces/countries.interface';
