@@ -2,17 +2,17 @@
   position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  svg path {
-    fill: white;
-  }
-}
-
 svg {
   width: auto;
   height: 40px;
   padding: 10px 0;
   margin: 0 0.3rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  svg path {
+    fill: white;
+  }
 }
 
 @media (min-width: 720px) {

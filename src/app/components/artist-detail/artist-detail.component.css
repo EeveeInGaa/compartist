@@ -3,6 +3,19 @@
   flex-direction: column;
 }
 
+img {
+  border-radius: 1rem;
+}
+
+h1,
+hr {
+  margin-bottom: 1rem;
+}
+
+hr {
+  width: 40%;
+}
+
 .general-wrapper {
   display: flex;
   flex-direction: column;
@@ -34,29 +47,16 @@
   width: 25rem;
 }
 
-.summary {
-  margin-top: 1rem;
-}
-
-img {
-  border-radius: 1rem;
-}
-
-h1,
-hr {
-  margin-bottom: 1rem;
-}
-
-hr {
-  width: 40%;
-}
-
 .tag {
   border-radius: 1rem;
   background: aliceblue;
   padding: 0.5rem 1.2rem;
   min-width: fit-content;
   white-space: nowrap;
+}
+
+.summary {
+  margin-top: 1rem;
 }
 
 .no-image-placeholder {

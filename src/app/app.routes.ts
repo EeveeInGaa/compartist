@@ -21,13 +21,6 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'compare-artists',
-    loadComponent: () =>
-      import('./components/compare-artists/compare-artists.component').then(
-        (m) => m.CompareArtistsComponent,
-      ),
-  },
-  {
     path: 'search-results',
     loadComponent: () =>
       import('./components/search-results/search-results.component').then(

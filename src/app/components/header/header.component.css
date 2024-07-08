@@ -14,27 +14,12 @@ header {
   margin: 0.5rem 0 0 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  header {
-    background: #3f4359;
-  }
-}
-
 .language-buttons-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: fit-content;
   margin: 0 0.3rem;
-}
-
-@media (min-width: 720px) {
-  header {
-    gap: 1rem;
-  }
-  .language-buttons-wrapper {
-    margin: 0 1rem;
-  }
 }
 
 .language-button {
@@ -57,10 +42,24 @@ header {
   padding: 0 0.3rem;
 }
 
+@media (min-width: 720px) {
+  header {
+    gap: 1rem;
+  }
+  .language-buttons-wrapper {
+    margin: 0 1rem;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
+  header {
+    background: #3f4359;
+  }
+
   .language-button {
     color: white;
   }
+
   .language-button:hover {
     background: #51546f;
   }

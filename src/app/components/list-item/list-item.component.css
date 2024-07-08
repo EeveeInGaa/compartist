@@ -4,6 +4,12 @@
   cursor: pointer;
 }
 
+img {
+  border-radius: 1rem;
+  max-height: 67px;
+  width: auto;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -31,14 +37,14 @@
   border: 1px solid darkslateblue;
 }
 
+.full-name {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
   .no-image-placeholder {
     border: 1px solid #ebebeb;
   }
-}
-
-.full-name {
-  display: none;
 }
 
 @media (max-width: 720px) {
@@ -54,10 +60,4 @@
   .full-name {
     display: block;
   }
-}
-
-img {
-  border-radius: 1rem;
-  max-height: 67px;
-  width: auto;
 }
