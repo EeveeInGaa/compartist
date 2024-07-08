@@ -12,15 +12,13 @@ export const routes: Routes = [
       import('./components/artist-list/artist-list.component').then(
         (m) => m.ArtistListComponent,
       ),
-    /*children: [
-      {
-        path: 'detail/:id',
-        loadComponent: () =>
-          import('./artist-detail/artist-detail.component').then(
-            (m) => m.ArtistDetailComponent,
-          ),
-      },
-    ],*/
+  },
+  {
+    path: 'artist-list/detail/:name',
+    loadComponent: () =>
+      import('./components/artist-detail/artist-detail.component').then(
+        (m) => m.ArtistDetailComponent,
+      ),
   },
   {
     path: 'compare-artists',

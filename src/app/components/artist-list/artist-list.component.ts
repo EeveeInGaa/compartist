@@ -6,7 +6,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ListItemComponent } from '../list-item/list-item.component';
 import { SelectComponent } from '../select/select.component';
 import { HttpClient } from '@angular/common/http';
@@ -33,6 +33,7 @@ export class ArtistListComponent {
   private readonly artistService = inject(ArtistsService);
   private readonly translocoService = inject(TranslocoService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
 
   readonly AvailableCountries = AvailableCountriesEnum;
   readonly AvailableCountryCodes = AvailableCountryCodesEnum;
@@ -76,5 +77,9 @@ export class ArtistListComponent {
 
   selectCountry(country: string) {
     this.selectedCountry.set(country);
+  }
+
+  goToDetails(name: string) {
+    this.router.navigate(['artist-list/detail', name]);
   }
 }

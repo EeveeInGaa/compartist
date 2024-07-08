@@ -1,8 +1,4 @@
-export interface ArtistTag {
+export interface ArtistTags {
   name: string;
   url: string;
-}
-
-export interface ArtistTags {
-  tag: ArtistTag[];
 }

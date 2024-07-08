@@ -1,1 +1,9 @@
-<p>artist-detail works!</p>
+@if (artistDetails()) {
+  <p>
+    {{ artistDetails()!.artist.name ? artistDetails()!.artist.name : 'ee' }}
+  </p>
+  <!--  <p>{{ artistDetails()?.artist.tags.tag }}</p>
+  <p>{{ artistDetails()?.artist.stats.playcount }}</p>
+  <p>{{ artistDetails()?.artist.stats.listeners }}</p>
+  <p>{{ artistDetails()?.artist.bio.summary }}</p>-->
+}

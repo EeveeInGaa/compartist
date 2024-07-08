@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 import {
+  LastFMArtistGetInfoResponse,
   LastFMArtistSearchResponse,
   LastFMGeoGetTopArtistsResponse,
 } from '../interfaces/artist.interface';
@@ -18,6 +19,12 @@ export class ArtistsService {
   getTopArtistsByCountry(country: string) {
     return this.httpClient.get<LastFMGeoGetTopArtistsResponse>(
       `${this.baseUrl}/?method=geo.gettopartists&country=${country}&api_key=${this.apiKey}&format=json`,
+    );
+  }
+
+  getArtistDetails(artistName: string) {
+    return this.httpClient.get<LastFMArtistGetInfoResponse>(
+      `${this.baseUrl}/?method=artist.getinfo&artist=${artistName}&api_key=${this.apiKey}&format=json`,
     );
   }
 

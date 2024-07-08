@@ -1,4 +1,7 @@
 import { ArtistImage } from './artist-image.interface';
+import { ArtistTags } from './artist-tags.interface';
+import { ArtistStats } from './artist-stats.interface';
+import { ArtistBio } from './artist-bio.interface';
 
 export interface Artist {
   name: string;
@@ -25,5 +28,21 @@ export interface LastFMArtistSearchResponse {
     artistmatches: {
       artist: Artist[];
     };
+  };
+}
+
+export interface LastFMArtistGetInfoResponse {
+  artist: {
+    name: string;
+    mbid: string;
+    url: string;
+    image: ArtistImage[];
+    streamable: 0 | 1;
+    ontour: 0 | 1;
+    stats: ArtistStats;
+    tags: {
+      tag: ArtistTags[];
+    };
+    bio: ArtistBio;
   };
 }

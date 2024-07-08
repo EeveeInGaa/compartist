@@ -1,6 +1,7 @@
 :host {
   position: relative;
   max-height: 67px;
+  cursor: pointer;
 }
 
 .wrapper {
