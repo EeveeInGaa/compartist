@@ -17,7 +17,7 @@ import { Artist } from '../../interfaces/artist.interface';
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({
-  selector: 'app-header',
+  selector: 'ca-header',
   standalone: true,
   imports: [
     SearchComponent,

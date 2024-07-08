@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'ca-footer',
   standalone: true,
   imports: [TranslocoPipe],
   templateUrl: './footer.component.html',

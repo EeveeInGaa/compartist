@@ -1,13 +1,13 @@
-<app-select
+<ca-select
   [selectedCountry]="selectedCountry()"
   [countries]="countries()"
   (selectCountry)="selectCountry($event)"
-></app-select>
+></ca-select>
 
 <ol>
   @for (artist of artists(); track artist.name) {
     <li>
-      <app-list-item [artist]="artist" [number]="$index + 1"></app-list-item>
+      <ca-list-item [artist]="artist" [number]="$index + 1"></ca-list-item>
     </li>
   }
 </ol>

@@ -4,10 +4,10 @@
     [title]="'go-to-main-page' | transloco"
     [attr.aria-label]="'go-to-main-page' | transloco"
   >
-    <app-logo></app-logo>
+    <ca-logo></ca-logo>
   </a>
 
-  <app-search (searchValue)="typeSearchTerm($event)"></app-search>
+  <ca-search (searchValue)="typeSearchTerm($event)"></ca-search>
   <div class="language-buttons-wrapper">
     @for (lang of availableLanguages(); track lang) {
       <button

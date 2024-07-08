@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
-  selector: 'app-not-found-page',
+  selector: 'ca-not-found-page',
   standalone: true,
   imports: [RouterLink, TranslocoPipe],
   templateUrl: './not-found-page.component.html',

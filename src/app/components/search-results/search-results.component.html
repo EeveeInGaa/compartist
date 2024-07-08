@@ -2,7 +2,7 @@
 <ul>
   @for (artist of foundArtists(); track artist.name) {
     <li>
-      <app-list-item [artist]="artist" [number]="$index + 1"></app-list-item>
+      <ca-list-item [artist]="artist" [number]="$index + 1"></ca-list-item>
     </li>
   }
 </ul>

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-compare-artists',
+  selector: 'ca-compare-artists',
   standalone: true,
   imports: [],
   templateUrl: './compare-artists.component.html',

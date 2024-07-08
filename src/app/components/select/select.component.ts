@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { Countries } from '../../interfaces/countries.interface';
 
 @Component({
-  selector: 'app-select',
+  selector: 'ca-select',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './select.component.html',

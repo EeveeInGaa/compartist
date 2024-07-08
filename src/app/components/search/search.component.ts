@@ -7,7 +7,7 @@ import {
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
-  selector: 'app-search',
+  selector: 'ca-search',
   standalone: true,
   imports: [TranslocoPipe],
   templateUrl: './search.component.html',

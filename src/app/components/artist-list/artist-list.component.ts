@@ -24,7 +24,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 @Component({
-  selector: 'app-artist-list',
+  selector: 'ca-artist-list',
   standalone: true,
   imports: [RouterLink, ListItemComponent, SelectComponent, TranslocoPipe],
   providers: [HttpClient, TranslocoPipe],

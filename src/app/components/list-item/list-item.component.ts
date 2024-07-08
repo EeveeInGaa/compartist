@@ -11,7 +11,7 @@ import { TranslocoDirective, TranslocoPipe } from '@jsverse/transloco';
 import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
-  selector: 'app-list-item',
+  selector: 'ca-list-item',
   standalone: true,
   imports: [
     DecimalPipe,

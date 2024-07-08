@@ -9,7 +9,7 @@ import { SearchService } from '../../services/search.service';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
-  selector: 'app-search-results',
+  selector: 'ca-search-results',
   standalone: true,
   imports: [ListItemComponent, TranslocoPipe],
   templateUrl: './search-results.component.html',
