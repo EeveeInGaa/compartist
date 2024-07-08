@@ -64,6 +64,9 @@ hr {
   align-items: center;
   justify-content: center;
   text-align: center;
+  /*I used relative values everywhere due to responsiveness,
+  but here I added hard coded values since the images come with a defined size and in this way
+  it was easier to set that calculating everything.*/
   width: 67px;
   height: 67px;
   border-radius: 1rem;

@@ -3,6 +3,8 @@
   --comp-dark-color-rgb: 0, 0, 0;
   --comp-dark-background-rgb: 47, 49, 56;
   --comp-light-color-rgb: 255, 255, 255;
+  /*I know that I should use more css variables to be consistent with color, spacing, border-radius etc.,
+   but I was focusing on the functionality and didnt added a design system.*/
 }
 
 * {
@@ -23,14 +25,6 @@ body {
   overflow-y: scroll;
 }
 
-@media (prefers-color-scheme: dark) {
-  html,
-  body {
-    background: rgb(var(--comp-dark-background-rgb));
-    color: rgb(var(--comp-light-color-rgb));
-  }
-}
-
 a {
   all: unset;
   cursor: pointer;
@@ -47,6 +41,15 @@ h1 {
   padding-right: 1rem;
   padding-left: 1rem;
 }
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background: rgb(var(--comp-dark-background-rgb));
+    color: rgb(var(--comp-light-color-rgb));
+  }
+}
+
 @media (min-width: 1200px) {
   h1 {
     font-size: 2rem;

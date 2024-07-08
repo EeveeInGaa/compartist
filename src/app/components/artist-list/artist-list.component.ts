@@ -40,6 +40,8 @@ export class ArtistListComponent {
 
   readonly artists = signal<Artist[]>([]);
 
+  /*Somehow, the translation for the Countries is not working; I still try to figure out why,
+  probably because they are not preloaded (since the app is quite small) */
   readonly countries = signal<Countries[]>([
     {
       countryCode: this.AvailableCountryCodes.Ger,
