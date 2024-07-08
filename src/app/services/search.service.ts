@@ -2,6 +2,7 @@ import { DestroyRef, effect, inject, Injectable, signal } from '@angular/core';
 import { ArtistsService } from './artists.service';
 import { Artist } from '../interfaces/artist.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class SearchService {
     if (this.searchTerm() !== '') {
       this.artistService
         .getArtistsBySearching(this.searchTerm())
-        .pipe(takeUntilDestroyed(this.destroyRef))
+        .pipe(debounceTime(250), takeUntilDestroyed(this.destroyRef))
         .subscribe({
           next: (res) => {
             const found = res.results.artistmatches.artist.slice(0, 10);
