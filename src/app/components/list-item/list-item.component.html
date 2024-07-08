@@ -2,13 +2,18 @@
   @if (artist()) {
     <div start class="start-wrapper">
       <p>{{ number() }}.</p>
-      <img
-        [src]="artist()!.image[2]['#text'] ? artist()!.image[2]['#text'] : ''"
-        alt="artist-image"
-      />
+      @if (artist()!.image[2]['#text'] !== '') {
+        <img [src]="artist()!.image[2]['#text']" alt="artist-image" />
+      } @else {
+        <div class="no-image-placeholder">
+          <span>{{ 'no-image' | transloco }}</span>
+        </div>
+      }
     </div>
     <div class="wrapper">
-      <h1>{{ artist()!.name }}</h1>
+      <h1 class="truncated-name">{{ artist()!.name | truncate: 20 }}</h1>
+      <h1 class="full-name">{{ artist()!.name }}</h1>
+
       <div class="inner-wrapper">
         <p>
           {{ artist()!.listeners | number: '' : 'en-US' }}

@@ -8,11 +8,18 @@ import { Artist } from '../../interfaces/artist.interface';
 import { DecimalPipe } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { TranslocoDirective, TranslocoPipe } from '@jsverse/transloco';
+import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-list-item',
   standalone: true,
-  imports: [DecimalPipe, CardComponent, TranslocoPipe, TranslocoDirective],
+  imports: [
+    DecimalPipe,
+    CardComponent,
+    TranslocoPipe,
+    TranslocoDirective,
+    TruncatePipe,
+  ],
   templateUrl: './list-item.component.html',
   styleUrl: './list-item.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

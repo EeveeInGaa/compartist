@@ -17,6 +17,44 @@
   gap: 0.5rem;
 }
 
+.no-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 67px;
+  height: 67px;
+  border-radius: 1rem;
+  font-size: 0.7rem;
+  padding: 0.4rem;
+  border: 1px solid darkslateblue;
+}
+
+@media (prefers-color-scheme: dark) {
+  .no-image-placeholder {
+    border: 1px solid #ebebeb;
+  }
+}
+
+.full-name {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .truncated-name {
+    display: block;
+  }
+}
+
+@media (min-width: 721px) {
+  .truncated-name {
+    display: none;
+  }
+  .full-name {
+    display: block;
+  }
+}
+
 img {
   border-radius: 1rem;
   max-height: 67px;
