@@ -1,27 +1,35 @@
 # Compartist
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
+## Usage
+You can run it by pulling it and run `ng serve`
+> you would also need to add the API key to `environment.development.ts` I will provide, since I don't want it to lie around openly. <br>
+> I know it's not the best way but dotenv seemed a bid too much.
 
-## Development server
+## What I did
+### Planning and setup
+1. plan how the app should look like, what routes are needed and collect requirements 
+2. setup app with prettier and eslint to have less pain with formatting and linting
+3. add basic component structure and styles to normalize everything (especially spacing; other style resets and styles come later)
+4. setup routes (at this point without the artist detail route, since I want to focus on the list first)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+> Normally I work with branches, but since this is a quite small app and I'm not working with anyone on it, I work on main. This reduces redundancy since I would just merge it once it's a Pull Request. 
 
-## Code scaffolding
+### Implementation of requirements
+1. create interfaces in preparation for the service (at this point I was thinking if I use a dotenv file (which I already added before) to not reveal my api key, but I thought for this task it would be more efficient to just put it in the environment file and skip the pain of setting up the dotenv)
+2. actually get data form the api over the service 
+3. add basic styling for list items to have a better overview over the data (that they are not clustered together) 
+4. finalize the (dumb/isolated) select component (with interface and enum in the parent for type safety; adding and reading them to the url queryParams could be added)
+5. add search functionality (a bid back and forth until it was working well)
+6. add translation (transloco seemed to be the easier option for this project than i18next)
+7. add styling (also for dark mode if system is in dark mode)
+8. refinements, refactorings and bug fixings (I commented some things in the code, I'm aware that some things are not best practice, but in terms of time and size of the project I considered them fine)
+9. add test for select component (unfortuntly this test is performed with Karma which I have not really worked with yet (we use Jest), and I ran in some problems executing it, but tried to adapt as good as possible)
+10. add readme to explain what and why I have done (or not done)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## What I have focused on
+- Responsive Design (normally I start mobile first, but since my main focus here was to first have the functionality ready, I started with my normal viewport/desktop first)
+- Type Safety (with enums, interfaces and typescript strict mode)
+- Clear Data Usage (performant calls over the service, not adding too much cache by unsubscribing)
+- Good Architecture (folders for components, pages, services, etc.)
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+> I'm aware that the app is not perfectly accessible (missing outlines for list items etc.) because I was focusing on the requirements, but I know that it's important in general and especially next year needed by law.
