@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   DestroyRef,
@@ -29,6 +30,7 @@ import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
   providers: [HttpClient, TranslocoPipe],
   templateUrl: './artist-list.component.html',
   styleUrl: './artist-list.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArtistListComponent {
   private readonly artistService = inject(ArtistsService);

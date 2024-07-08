@@ -1,4 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { SearchComponent } from '../search/search.component';
 import { Router, RouterLink } from '@angular/router';
 import { SearchResultsComponent } from '../search-results/search-results.component';
@@ -24,6 +29,7 @@ import { LogoComponent } from '../logo/logo.component';
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   private searchService = inject(SearchService);

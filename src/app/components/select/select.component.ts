@@ -1,4 +1,11 @@
-import { Component, input, OnInit, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  OnInit,
+  output,
+  signal,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Countries } from '../../interfaces/countries.interface';
 
@@ -8,6 +15,7 @@ import { Countries } from '../../interfaces/countries.interface';
   imports: [FormsModule],
   templateUrl: './select.component.html',
   styleUrl: './select.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent {
   selectedCountry = input.required<string>();

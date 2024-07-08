@@ -1,4 +1,9 @@
-import { Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
@@ -7,6 +12,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
   imports: [TranslocoPipe],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent {
   readonly searchValue = output<string>();
