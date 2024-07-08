@@ -1,9 +1,36 @@
 @if (artistDetails()) {
-  <p>
-    {{ artistDetails()!.artist.name ? artistDetails()!.artist.name : 'ee' }}
-  </p>
-  <!--  <p>{{ artistDetails()?.artist.tags.tag }}</p>
-  <p>{{ artistDetails()?.artist.stats.playcount }}</p>
-  <p>{{ artistDetails()?.artist.stats.listeners }}</p>
-  <p>{{ artistDetails()?.artist.bio.summary }}</p>-->
+  <h1>
+    {{ artistDetails()!.artist.name }}
+  </h1>
+  <hr />
+  <div class="general-wrapper">
+    @if (artistDetails()!.artist.image[2]['#text']) {
+      <img
+        [src]="artistDetails()!.artist.image[2]['#text']"
+        alt="artist-image"
+      />
+    } @else {
+      <div class="no-image-placeholder">
+        <span>{{ 'no-image' | transloco }}</span>
+      </div>
+    }
+    <div class="general">
+      <div class="stats">
+        <p>
+          {{ 'playcount' | transloco }}:
+          {{ artistDetails()!.artist.stats.playcount | number: '' : 'en-US' }}
+        </p>
+        <p>
+          {{ 'listeners' | transloco }}:
+          {{ artistDetails()!.artist.stats.listeners | number: '' : 'en-US' }}
+        </p>
+      </div>
+      <div class="tags">
+        @for (tag of artistDetails()!.artist.tags.tag; track tag.name) {
+          <p class="tag">{{ tag.name }}</p>
+        }
+      </div>
+    </div>
+  </div>
+  <p class="summary" [textContent]="artistDetails()!.artist.bio.summary"></p>
 }

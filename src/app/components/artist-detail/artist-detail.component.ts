@@ -11,11 +11,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ArtistsService } from '../../services/artists.service';
 import { LastFMArtistGetInfoResponse } from '../../interfaces/artist.interface';
 import { ActivatedRoute } from '@angular/router';
+import { DecimalPipe } from '@angular/common';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'ca-artist-detail',
   standalone: true,
-  imports: [],
+  imports: [DecimalPipe, TranslocoPipe],
   templateUrl: './artist-detail.component.html',
   styleUrl: './artist-detail.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -47,4 +49,13 @@ export class ArtistDetailComponent implements OnInit {
         });
     }
   });
+
+  escapeHTML(str: string): string {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
 }
