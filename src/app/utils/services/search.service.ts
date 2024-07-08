@@ -16,6 +16,7 @@ export class SearchService {
   readonly searchTerm = signal<string>('');
   readonly foundArtists = signal<Artist[]>([]);
 
+  /*I am aware that it would be better to put the logic in a store, but it seems a bid too much for this project*/
   readonly foundArtistsSubscription = effect(() => {
     if (this.searchTerm() !== '') {
       this.artistService
