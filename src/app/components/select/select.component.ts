@@ -8,12 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { Countries } from '../../utils/interfaces/countries.interface';
 
 @Component({
-  selector: 'ca-select',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './select.component.html',
-  styleUrl: './select.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ca-select',
+    imports: [FormsModule],
+    templateUrl: './select.component.html',
+    styleUrl: './select.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectComponent {
   selectedCountry = input.required<string>();

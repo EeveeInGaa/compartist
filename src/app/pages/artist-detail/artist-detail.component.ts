@@ -15,12 +15,11 @@ import { DecimalPipe } from '@angular/common';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
-  selector: 'ca-artist-detail',
-  standalone: true,
-  imports: [DecimalPipe, TranslocoPipe],
-  templateUrl: './artist-detail.component.html',
-  styleUrl: './artist-detail.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ca-artist-detail',
+    imports: [DecimalPipe, TranslocoPipe],
+    templateUrl: './artist-detail.component.html',
+    styleUrl: './artist-detail.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistDetailComponent implements OnInit {
   private readonly artistService = inject(ArtistsService);

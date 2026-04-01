@@ -16,19 +16,18 @@ import {
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({
-  selector: 'ca-header',
-  standalone: true,
-  imports: [
-    SearchComponent,
-    RouterLink,
-    SearchResultsComponent,
-    TranslocoPipe,
-    TranslocoDirective,
-    LogoComponent,
-  ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ca-header',
+    imports: [
+        SearchComponent,
+        RouterLink,
+        SearchResultsComponent,
+        TranslocoPipe,
+        TranslocoDirective,
+        LogoComponent,
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
   private searchService = inject(SearchService);

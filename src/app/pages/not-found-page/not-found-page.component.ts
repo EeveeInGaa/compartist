@@ -3,11 +3,10 @@ import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
-  selector: 'ca-not-found-page',
-  standalone: true,
-  imports: [RouterLink, TranslocoPipe],
-  templateUrl: './not-found-page.component.html',
-  styleUrl: './not-found-page.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ca-not-found-page',
+    imports: [RouterLink, TranslocoPipe],
+    templateUrl: './not-found-page.component.html',
+    styleUrl: './not-found-page.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotFoundPageComponent {}

@@ -21,13 +21,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 @Component({
-  selector: 'ca-artist-list',
-  standalone: true,
-  imports: [RouterLink, ListItemComponent, SelectComponent, TranslocoPipe],
-  providers: [HttpClient, TranslocoPipe],
-  templateUrl: './artist-list.component.html',
-  styleUrl: './artist-list.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ca-artist-list',
+    imports: [RouterLink, ListItemComponent, SelectComponent, TranslocoPipe],
+    providers: [HttpClient, TranslocoPipe],
+    templateUrl: './artist-list.component.html',
+    styleUrl: './artist-list.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistListComponent {
   private readonly artistService = inject(ArtistsService);
