@@ -4,10 +4,12 @@
   </h1>
   <hr />
   <div class="general-wrapper">
-    @if (artistDetails()!.artist.image[2]['#text']) {
+    @if (artistImageUrl(); as imageUrl) {
       <img
-        [src]="artistDetails()!.artist.image[2]['#text']"
-        alt="artist-image"
+        [src]="imageUrl"
+        [alt]="artistDetails()!.artist.name"
+        width="300"
+        height="300"
       />
     } @else {
       <div class="no-image-placeholder">

@@ -2,8 +2,14 @@
   @if (artist()) {
     <div class="start-wrapper">
       <p>{{ number() }}.</p>
-      @if (artist()!.image[2]['#text'] !== '') {
-        <img [src]="artist()!.image[2]['#text']" alt="artist-image" />
+      @if (artistImageUrl(); as imageUrl) {
+        <img
+          [src]="imageUrl"
+          [alt]="artistName()"
+          width="174"
+          height="174"
+          loading="lazy"
+        />
       } @else {
         <div class="no-image-placeholder">
           <span>{{ 'no-image' | transloco }}</span>

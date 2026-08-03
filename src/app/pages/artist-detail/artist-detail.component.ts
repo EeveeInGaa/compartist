@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   DestroyRef,
   effect,
   inject,
@@ -13,13 +14,14 @@ import { LastFMArtistGetInfoResponse } from '../../utils/interfaces/artist.inter
 import { ActivatedRoute } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { getArtistImageUrl } from '../../utils/functions/artist-image';
 
 @Component({
-    selector: 'ca-artist-detail',
-    imports: [DecimalPipe, TranslocoPipe],
-    templateUrl: './artist-detail.component.html',
-    styleUrl: './artist-detail.component.css',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ca-artist-detail',
+  imports: [DecimalPipe, TranslocoPipe],
+  templateUrl: './artist-detail.component.html',
+  styleUrl: './artist-detail.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArtistDetailComponent implements OnInit {
   private readonly artistService = inject(ArtistsService);
@@ -35,6 +37,14 @@ export class ArtistDetailComponent implements OnInit {
       this.artistName.set(name);
     }
   }
+
+  protected readonly artistImageUrl = computed(() => {
+    const details = this.artistDetails();
+
+    return details
+      ? getArtistImageUrl(details.artist.image, 'extralarge')
+      : null;
+  });
 
   readonly getArtistDetailByName = effect(() => {
     if (this.artistName && this.artistDetails) {

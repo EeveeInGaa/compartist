@@ -9,6 +9,7 @@ import { DecimalPipe } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { TranslocoDirective, TranslocoPipe } from '@jsverse/transloco';
 import { TruncatePipe } from '../../utils/pipes/truncate.pipe';
+import { getArtistImageUrl } from '../../utils/functions/artist-image';
 
 @Component({
   selector: 'ca-list-item',
@@ -28,4 +29,10 @@ export class ListItemComponent {
   number = input<number>();
 
   protected readonly artistName = computed(() => this.artist()?.name ?? '');
+
+  protected readonly artistImageUrl = computed(() => {
+    const artist = this.artist();
+
+    return artist ? getArtistImageUrl(artist.image, 'large') : null;
+  });
 }
