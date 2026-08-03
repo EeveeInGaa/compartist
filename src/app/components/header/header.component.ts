@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
 import { Router, RouterLink } from '@angular/router';
-import { SearchService } from '../../utils/services/search.service';
 import {
   TranslocoPipe,
   TranslocoService,

@@ -15,7 +15,7 @@
 
 html,
 body {
-  font-family: var(--comp-font-family);
+  font-family: var(--comp-font-family), serif;
   font-size: 16px;
   color: rgb(var(--comp-dark-color-rgb));
   background: rgb(var(--comp-light-color-rgb));
@@ -28,6 +28,14 @@ body {
 a {
   all: unset;
   cursor: pointer;
+}
+
+.artist-summary a {
+  color: darkslateblue;
+}
+
+.artist-summary a:hover, .summary a:focus {
+  color: crimson;
 }
 
 h1 {
@@ -47,6 +55,10 @@ h1 {
   body {
     background: rgb(var(--comp-dark-background-rgb));
     color: rgb(var(--comp-light-color-rgb));
+  }
+
+  .artist-summary a {
+    color: #a48dd2;
   }
 }
 
