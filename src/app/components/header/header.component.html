@@ -1,10 +1,10 @@
 <header>
   <a
-    href="/"
+    routerLink="/"
     [title]="'go-to-main-page' | transloco"
     [attr.aria-label]="'go-to-main-page' | transloco"
   >
-    <ca-logo></ca-logo>
+    <ca-logo />
   </a>
 
   <ca-search (searchValue)="typeSearchTerm($event)"></ca-search>
