@@ -6,7 +6,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ListItemComponent } from '../../components/list-item/list-item.component';
 import { SelectComponent } from '../../components/select/select.component';
 import { HttpClient } from '@angular/common/http';
@@ -22,7 +22,7 @@ import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 @Component({
     selector: 'ca-artist-list',
-    imports: [RouterLink, ListItemComponent, SelectComponent, TranslocoPipe],
+    imports: [ListItemComponent, SelectComponent],
     providers: [HttpClient, TranslocoPipe],
     templateUrl: './artist-list.component.html',
     styleUrl: './artist-list.component.css',

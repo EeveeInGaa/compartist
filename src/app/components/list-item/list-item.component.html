@@ -1,6 +1,6 @@
 <ca-card>
   @if (artist()) {
-    <div start class="start-wrapper">
+    <div class="start-wrapper">
       <p>{{ number() }}.</p>
       @if (artist()!.image[2]['#text'] !== '') {
         <img [src]="artist()!.image[2]['#text']" alt="artist-image" />
@@ -24,8 +24,8 @@
             [href]="artist()!.url"
             rel="noopener noreferrer"
             target="_blank"
-            [title]="t('link-to-artist', { artist: artist()?.name })"
-            [attr.aria-label]="t('link-to-artist', { artist: artist()?.name })"
+            [title]="t('link-to-artist', { artist: artistName() })"
+            [attr.aria-label]="t('link-to-artist', { artist: artistName() })"
             >&#9432;</a
           >
         </ng-container>

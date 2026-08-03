@@ -5,11 +5,9 @@ import {
   signal,
 } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
-import { Router, RouterLink } from '@angular/router';
-import { SearchResultsComponent } from '../../pages/search-results/search-results.component';
+import { Router } from '@angular/router';
 import { SearchService } from '../../utils/services/search.service';
 import {
-  TranslocoDirective,
   TranslocoPipe,
   TranslocoService,
 } from '@jsverse/transloco';
@@ -19,10 +17,7 @@ import { LogoComponent } from '../logo/logo.component';
     selector: 'ca-header',
     imports: [
         SearchComponent,
-        RouterLink,
-        SearchResultsComponent,
         TranslocoPipe,
-        TranslocoDirective,
         LogoComponent,
     ],
     templateUrl: './header.component.html',
