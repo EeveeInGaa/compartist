@@ -1,52 +1,53 @@
-import { DestroyRef, effect, inject, Injectable, signal } from '@angular/core';
+import {
+  computed,
+  debounced,
+  inject,
+  Injectable,
+  signal,
+} from '@angular/core';
 import { ArtistsService } from './artists.service';
 import { Artist } from '../interfaces/artist.interface';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { debounceTime } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchService {
-  private artistService = inject(ArtistsService);
-  private destroyRef = inject(DestroyRef);
-  private route = inject(ActivatedRoute);
+  private readonly artistsService = inject(ArtistsService);
 
-  readonly searchTerm = signal<string>('');
-  readonly foundArtists = signal<Artist[]>([]);
+  private readonly searchTermState = signal('');
 
-  /*I am aware that it would be better to put the logic in a store, but it seems a bid too much for this project*/
-  readonly foundArtistsSubscription = effect(() => {
-    if (this.searchTerm() !== '') {
-      this.artistService
-        .getArtistsBySearching(this.searchTerm())
-        .pipe(debounceTime(250), takeUntilDestroyed(this.destroyRef))
-        .subscribe({
-          next: (res) => {
-            const found = res.results.artistmatches.artist.slice(0, 20);
-            this.foundArtists.set(found);
-          },
-        });
-    }
-  });
+  readonly searchTerm = this.searchTermState.asReadonly();
 
-  readonly param = effect(
-    () => {
-      this.route.queryParams.subscribe((param) => {
-        this.searchTerm.set(param['term']);
-      });
-    },
-    /*I am aware that this is not best practice and should only be used in exceptions,
-    but for this use case I consider it fine to make it work.*/
-    { allowSignalWrites: true },
+  private readonly debouncedTerm = debounced(
+    () => this.searchTermState().trim(),
+    250,
   );
 
-  setSearchTerm(term: string) {
-    this.searchTerm.set(term);
-  }
+  private readonly artistsResource = rxResource({
+    params: () => {
+      const term = this.debouncedTerm.value();
+      return term || undefined;
+    },
 
-  getFoundArtists() {
-    return this.foundArtists;
+    stream: ({ params: term }) =>
+      this.artistsService
+        .getArtistsBySearching(term)
+        .pipe(
+          map((response) => response.results.artistmatches.artist.slice(0, 20)),
+        ),
+
+    defaultValue: [] as Artist[],
+  });
+
+  readonly foundArtists = this.artistsResource.value;
+  readonly isLoading = this.artistsResource.isLoading;
+  readonly error = this.artistsResource.error;
+
+  readonly hasResults = computed(() => this.foundArtists().length > 0);
+
+  setSearchTerm(term: string): void {
+    this.searchTermState.set(term);
   }
 }

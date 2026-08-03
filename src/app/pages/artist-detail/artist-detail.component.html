@@ -4,10 +4,12 @@
   </h1>
   <hr />
   <div class="general-wrapper">
-    @if (artistDetails()!.artist.image[2]['#text']) {
+    @if (artistImageUrl(); as imageUrl) {
       <img
-        [src]="artistDetails()!.artist.image[2]['#text']"
-        alt="artist-image"
+        [src]="imageUrl"
+        [alt]="artistDetails()!.artist.name"
+        width="300"
+        height="300"
       />
     } @else {
       <div class="no-image-placeholder">
@@ -32,5 +34,8 @@
       </div>
     </div>
   </div>
-  <p class="summary" [textContent]="artistDetails()!.artist.bio.summary"></p>
+  <!-- innerHTML removes unsave content like script tags;
+  a custom pipe with DOMPurify with explicit ALLOWED_TAGS and ALLOWED_ATTR could be used to sanitize values;
+   for this specific use case innerHTML works fine -->
+  <p class="summary artist-summary" [innerHTML]="artistDetails()!.artist.bio.summary"></p>
 }

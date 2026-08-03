@@ -1,12 +1,21 @@
 <p>{{ 'search-results' | transloco }}:</p>
-<ul>
-  @for (artist of foundArtists(); track artist.name) {
-    <li>
-      <ca-list-item
-        [artist]="artist"
-        [number]="$index + 1"
-        (click)="goToDetails(artist.name)"
-      ></ca-list-item>
-    </li>
-  }
-</ul>
+
+@if (isLoading()) {
+  <p>Suche läuft …</p>
+} @else if (searchError()) {
+  <p>Die Suche konnte nicht ausgeführt werden.</p>
+} @else if (foundArtists().length === 0) {
+  <p>Keine Künstler gefunden.</p>
+} @else {
+  <ul>
+    @for (artist of foundArtists(); track artist.name) {
+      <li>
+        <ca-list-item
+          [artist]="artist"
+          [number]="$index + 1"
+          (click)="goToDetails(artist.name)"
+        />
+      </li>
+    }
+  </ul>
+}
