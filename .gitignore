@@ -36,7 +36,8 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
-.env
+# Local environment secrets
+/.env
 
 # System files
 .DS_Store

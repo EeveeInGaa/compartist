@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment.development';
+import { HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import {
   LastFMArtistGetInfoResponse,
   LastFMArtistSearchResponse,
@@ -11,26 +12,34 @@ import {
   providedIn: 'root',
 })
 export class ArtistsService {
-  baseUrl = 'https://ws.audioscrobbler.com/2.0';
+  private readonly baseUrl = '/api/lastfm';
+  private readonly httpClient = inject(HttpClient);
 
-  private apiKey = environment.API_KEY;
-  private httpClient = inject(HttpClient);
-
-  getTopArtistsByCountry(country: string) {
-    return this.httpClient.get<LastFMGeoGetTopArtistsResponse>(
-      `${this.baseUrl}/?method=geo.gettopartists&country=${country}&api_key=${this.apiKey}&format=json`,
-    );
+  getTopArtistsByCountry(
+    country: string,
+  ): Observable<LastFMGeoGetTopArtistsResponse> {
+    return this.httpClient.get<LastFMGeoGetTopArtistsResponse>(this.baseUrl, {
+      params: new HttpParams()
+        .set('method', 'geo.gettopartists')
+        .set('country', country),
+    });
   }
 
-  getArtistDetails(artistName: string) {
-    return this.httpClient.get<LastFMArtistGetInfoResponse>(
-      `${this.baseUrl}/?method=artist.getinfo&artist=${artistName}&api_key=${this.apiKey}&format=json`,
-    );
+  getArtistDetails(
+    artistName: string,
+  ): Observable<LastFMArtistGetInfoResponse> {
+    return this.httpClient.get<LastFMArtistGetInfoResponse>(this.baseUrl, {
+      params: new HttpParams()
+        .set('method', 'artist.getinfo')
+        .set('artist', artistName),
+    });
   }
 
-  getArtistsBySearching(term: string) {
-    return this.httpClient.get<LastFMArtistSearchResponse>(
-      `${this.baseUrl}/?method=artist.search&artist=${term}&api_key=${this.apiKey}&format=json`,
-    );
+  getArtistsBySearching(term: string): Observable<LastFMArtistSearchResponse> {
+    return this.httpClient.get<LastFMArtistSearchResponse>(this.baseUrl, {
+      params: new HttpParams()
+        .set('method', 'artist.search')
+        .set('artist', term),
+    });
   }
 }

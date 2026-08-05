@@ -22,7 +22,6 @@
     "@angular/router": "^22.1.0",
     "@jsverse/transloco": "^7.4.2",
     "@types/node": "^26.1.2",
-    "dotenv": "^16.4.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.1"
