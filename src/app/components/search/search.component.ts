@@ -11,7 +11,8 @@ import { TranslocoPipe } from '@jsverse/transloco';
 export class SearchComponent {
   readonly searchValue = output<string>();
 
-  onSearch(value: string): void {
+  onSubmit(event: SubmitEvent, value: string): void {
+    event.preventDefault();
     this.searchValue.emit(value);
   }
 }

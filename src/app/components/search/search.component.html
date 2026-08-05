@@ -1,9 +1,16 @@
-<!--It could be wrapped in a form (Reactive Form) to have better control over the values, but for this use case i considered this as sufficient solution-->
-<input
-  #searchInput
-  type="search"
-  name="search"
-  [attr.aria-label]="'search-artist' | transloco"
-  [placeholder]="'search-artist' | transloco"
-  (input)="onSearch(searchInput.value)"
-/>
+<search>
+  <form (submit)="onSubmit($event, searchInput.value)">
+    <label class="visually-hidden" for="artist-search">
+      {{ 'search-artist' | transloco }}
+    </label>
+    <input
+      #searchInput
+      id="artist-search"
+      type="search"
+      name="term"
+      enterkeyhint="search"
+      [placeholder]="'search-artist' | transloco"
+    />
+    <button type="submit">{{ 'search' | transloco }}</button>
+  </form>
+</search>

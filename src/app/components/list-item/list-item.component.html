@@ -17,8 +17,14 @@
       }
     </div>
     <div class="wrapper">
-      <h1 class="truncated-name">{{ artist()!.name | truncate: 20 }}</h1>
-      <h1 class="full-name">{{ artist()!.name }}</h1>
+      <h2>
+        <a
+          class="artist-detail-link"
+          [routerLink]="['/artist-list/detail', artist()!.name]"
+        >
+          {{ artist()!.name }}
+        </a>
+      </h2>
 
       <div class="inner-wrapper">
         <p>
@@ -28,11 +34,11 @@
         <ng-container *transloco="let t">
           <a
             [href]="artist()!.url"
+            class="external-artist-link"
             rel="noopener noreferrer"
             target="_blank"
-            [title]="t('link-to-artist', { artist: artistName() })"
             [attr.aria-label]="t('link-to-artist', { artist: artistName() })"
-            >&#9432;</a
+            >Last.fm <span aria-hidden="true">↗</span></a
           >
         </ng-container>
       </div>

@@ -4,12 +4,10 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { SearchComponent } from '../search/search.component';
 import { Router, RouterLink } from '@angular/router';
-import {
-  TranslocoPipe,
-  TranslocoService,
-} from '@jsverse/transloco';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({
@@ -22,6 +20,7 @@ import { LogoComponent } from '../logo/logo.component';
 export class HeaderComponent {
   private readonly router = inject(Router);
   private readonly translocoService = inject(TranslocoService);
+  private readonly document = inject(DOCUMENT);
 
   readonly currentLanguage = signal(this.translocoService.getActiveLang());
 
@@ -45,5 +44,6 @@ export class HeaderComponent {
   changeLanguage(language: string): void {
     this.currentLanguage.set(language);
     this.translocoService.setActiveLang(language);
+    this.document.documentElement.lang = language;
   }
 }

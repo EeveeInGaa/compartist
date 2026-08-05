@@ -1,5 +1,6 @@
 :root {
-  --comp-font-family: 'Montserrat', 'Helevetika Neue', sans-serif;
+  --comp-font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --comp-focus-color: #b41545;
   --comp-dark-color-rgb: 0, 0, 0;
   --comp-dark-background-rgb: 47, 49, 56;
   --comp-light-color-rgb: 255, 255, 255;
@@ -26,15 +27,50 @@ body {
 }
 
 a {
-  all: unset;
-  cursor: pointer;
+  color: inherit;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+:where(a, button, input, select):focus-visible {
+  outline: 3px solid var(--comp-focus-color);
+  outline-offset: 3px;
+}
+
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: darkslateblue;
+  color: white;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 .artist-summary a {
   color: darkslateblue;
 }
 
-.artist-summary a:hover, .summary a:focus {
+.artist-summary a:hover,
+.summary a:focus {
   color: crimson;
 }
 

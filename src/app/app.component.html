@@ -1,3 +1,8 @@
+<a class="skip-link" href="#main-content">{{
+  'skip-to-content' | transloco
+}}</a>
 <ca-header class="container"></ca-header>
-<main class="grow container top-spacing"><router-outlet></router-outlet></main>
+<main id="main-content" class="grow container top-spacing" tabindex="-1">
+  <router-outlet></router-outlet>
+</main>
 <ca-footer class="container"></ca-footer>

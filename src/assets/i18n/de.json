@@ -1,5 +1,12 @@
 {
   "compare": "Vergleich",
+  "skip-to-content": "Zum Hauptinhalt springen",
+  "search": "Suchen",
+  "select-country": "Land auswählen",
+  "top-artists": "Top-Künstler",
+  "choose-language": "Sprache auswählen",
+  "search-result-count": "{{count}} Künstler gefunden.",
+  "artist-count": "{{count}} Top-Künstler geladen.",
   "listeners": "Zuhörer",
   "playcount": "Abgespielt",
   "no-data": "Keine Daten erhalten.",

@@ -1,3 +1,5 @@
+<h1>{{ 'top-artists' | transloco }}</h1>
+
 <ca-select
   [selectedCountry]="selectedCountry()"
   [countries]="countries()"
@@ -8,18 +10,17 @@
   @if (isLoading()) {
     <p>{{ 'loading-artists' | transloco }}</p>
   } @else if (loadError()) {
-    <p>{{ 'artists-load-error' | transloco }}</p>
+    <p aria-live="polite">{{ 'artists-load-error' | transloco }}</p>
   } @else if (!hasArtists()) {
-    <p>{{ 'no-artists' | transloco }}</p>
+    <p aria-live="polite">{{ 'no-artists' | transloco }}</p>
   } @else {
+    <p class="visually-hidden" aria-live="polite">
+      {{ 'artist-count' | transloco: { count: artists().length } }}
+    </p>
     <ol>
       @for (artist of artists(); track artist.name) {
         <li>
-          <ca-list-item
-            [artist]="artist"
-            [number]="$index + 1"
-            (click)="goToDetails(artist.name)"
-          ></ca-list-item>
+          <ca-list-item [artist]="artist" [number]="$index + 1"></ca-list-item>
         </li>
       }
     </ol>

@@ -2,18 +2,37 @@
   position: relative;
 }
 
+form {
+  display: flex;
+  align-items: stretch;
+  gap: 0.25rem;
+}
+
 input {
-  all: unset;
+  min-width: 0;
+  border: 1px solid transparent;
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
   background: darkslateblue;
   color: white;
-  height: 2rem;
+  min-height: 2.75rem;
   width: 5rem;
+  font: inherit;
 }
 
 input::placeholder {
   color: #e5e7f8;
+}
+
+button {
+  min-height: 2.75rem;
+  border: 1px solid darkslateblue;
+  border-radius: 0.5rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  color: darkslateblue;
+  font: inherit;
+  cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +43,11 @@ input::placeholder {
 
   input::placeholder {
     color: darkslateblue;
+  }
+
+  button {
+    border-color: aliceblue;
+    color: aliceblue;
   }
 }
 

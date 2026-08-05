@@ -8,17 +8,22 @@
   </a>
 
   <ca-search (searchValue)="typeSearchTerm($event)"></ca-search>
-  <div class="language-buttons-wrapper">
+  <div
+    class="language-buttons-wrapper"
+    role="group"
+    [attr.aria-label]="'choose-language' | transloco"
+  >
     @for (lang of availableLanguages(); track lang) {
       <button
         class="language-button"
+        type="button"
         (click)="changeLanguage(lang.toString())"
-        [disabled]="currentLanguage() === lang.toString()"
+        [attr.aria-pressed]="currentLanguage() === lang.toString()"
       >
         {{ lang.toString().toUpperCase() }}
       </button>
       @if ($index < availableLanguages().length - 1) {
-        <div class="language-separator">/</div>
+        <span class="language-separator" aria-hidden="true">/</span>
       }
     }
   </div>

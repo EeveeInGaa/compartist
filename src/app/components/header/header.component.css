@@ -5,6 +5,7 @@
 header {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
@@ -23,7 +24,10 @@ header {
 }
 
 .language-button {
-  all: unset;
+  appearance: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
   background: transparent;
   color: black;
   border-radius: 0.5rem;
@@ -34,8 +38,10 @@ header {
   background: #e5e7f8;
 }
 
-.language-button:disabled {
-  color: #9b9b9b;
+.language-button[aria-pressed='true'] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .language-separator {

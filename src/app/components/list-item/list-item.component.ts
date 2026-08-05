@@ -8,8 +8,8 @@ import { Artist } from '../../utils/interfaces/artist.interface';
 import { DecimalPipe } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { TranslocoDirective, TranslocoPipe } from '@jsverse/transloco';
-import { TruncatePipe } from '../../utils/pipes/truncate.pipe';
 import { getArtistImageUrl } from '../../utils/functions/artist-image';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'ca-list-item',
@@ -18,7 +18,7 @@ import { getArtistImageUrl } from '../../utils/functions/artist-image';
     CardComponent,
     TranslocoPipe,
     TranslocoDirective,
-    TruncatePipe,
+    RouterLink,
   ],
   templateUrl: './list-item.component.html',
   styleUrl: './list-item.component.css',

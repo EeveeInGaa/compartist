@@ -1,21 +1,22 @@
-<p>{{ 'search-results' | transloco }}:</p>
+<h1>{{ 'search-results' | transloco }}</h1>
 
-@if (isLoading()) {
-  <p>{{ 'search-loading' | transloco }}</p>
-} @else if (searchError()) {
-  <p>{{ 'search-error' | transloco }}</p>
-} @else if (foundArtists().length === 0) {
-  <p>{{ 'no-search-results' | transloco }}</p>
-} @else {
-  <ul>
-    @for (artist of foundArtists(); track artist.name) {
-      <li>
-        <ca-list-item
-          [artist]="artist"
-          [number]="$index + 1"
-          (click)="goToDetails(artist.name)"
-        />
-      </li>
-    }
-  </ul>
-}
+<div>
+  @if (isLoading()) {
+    <p>{{ 'search-loading' | transloco }}</p>
+  } @else if (searchError()) {
+    <p aria-live="polite">{{ 'search-error' | transloco }}</p>
+  } @else if (foundArtists().length === 0) {
+    <p aria-live="polite">{{ 'no-search-results' | transloco }}</p>
+  } @else {
+    <p class="visually-hidden" aria-live="polite">
+      {{ 'search-result-count' | transloco: { count: foundArtists().length } }}
+    </p>
+    <ul>
+      @for (artist of foundArtists(); track artist.name) {
+        <li>
+          <ca-list-item [artist]="artist" [number]="$index + 1" />
+        </li>
+      }
+    </ul>
+  }
+</div>

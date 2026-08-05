@@ -1,5 +1,12 @@
 {
   "compare": "Comparison",
+  "skip-to-content": "Skip to main content",
+  "search": "Search",
+  "select-country": "Select country",
+  "top-artists": "Top artists",
+  "choose-language": "Choose language",
+  "search-result-count": "{{count}} artists found.",
+  "artist-count": "{{count}} top artists loaded.",
   "listeners": "Listeners",
   "playcount": "Playcount",
   "no-data": "No are are coming.",

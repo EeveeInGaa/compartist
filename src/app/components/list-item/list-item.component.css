@@ -1,7 +1,6 @@
 :host {
   position: relative;
   max-height: 67px;
-  cursor: pointer;
 }
 
 img {
@@ -37,8 +36,24 @@ img {
   border: 1px solid darkslateblue;
 }
 
-.full-name {
-  display: none;
+h2 {
+  max-width: min(60vw, 45rem);
+  overflow: hidden;
+  font-size: 1.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.artist-detail-link {
+  text-decoration: none;
+}
+
+.artist-detail-link:hover {
+  text-decoration: underline;
+}
+
+.external-artist-link {
+  font-size: 0.85rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -48,16 +63,11 @@ img {
 }
 
 @media (max-width: 720px) {
-  .truncated-name {
-    display: block;
-  }
-}
-
-@media (min-width: 721px) {
-  .truncated-name {
-    display: none;
-  }
-  .full-name {
-    display: block;
+  .external-artist-link {
+    display: inline-block;
+    max-width: 9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
