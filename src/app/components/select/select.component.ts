@@ -6,13 +6,14 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Countries } from '../../utils/interfaces/countries.interface';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
-    selector: 'ca-select',
-    imports: [FormsModule],
-    templateUrl: './select.component.html',
-    styleUrl: './select.component.css',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ca-select',
+  imports: [FormsModule, TranslocoPipe],
+  templateUrl: './select.component.html',
+  styleUrl: './select.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent {
   selectedCountry = input.required<string>();

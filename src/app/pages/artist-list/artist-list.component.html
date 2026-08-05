@@ -4,14 +4,24 @@
   (selectCountry)="selectCountry($event)"
 ></ca-select>
 
-<ol>
-  @for (artist of artists(); track artist.name) {
-    <li>
-      <ca-list-item
-        [artist]="artist"
-        [number]="$index + 1"
-        (click)="goToDetails(artist.name)"
-      ></ca-list-item>
-    </li>
+<div>
+  @if (isLoading()) {
+    <p>{{ 'loading-artists' | transloco }}</p>
+  } @else if (loadError()) {
+    <p>{{ 'artists-load-error' | transloco }}</p>
+  } @else if (!hasArtists()) {
+    <p>{{ 'no-artists' | transloco }}</p>
+  } @else {
+    <ol>
+      @for (artist of artists(); track artist.name) {
+        <li>
+          <ca-list-item
+            [artist]="artist"
+            [number]="$index + 1"
+            (click)="goToDetails(artist.name)"
+          ></ca-list-item>
+        </li>
+      }
+    </ol>
   }
-</ol>
+</div>

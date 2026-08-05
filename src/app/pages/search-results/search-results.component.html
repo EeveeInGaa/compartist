@@ -1,11 +1,11 @@
 <p>{{ 'search-results' | transloco }}:</p>
 
 @if (isLoading()) {
-  <p>Suche läuft …</p>
+  <p>{{ 'search-loading' | transloco }}</p>
 } @else if (searchError()) {
-  <p>Die Suche konnte nicht ausgeführt werden.</p>
+  <p>{{ 'search-error' | transloco }}</p>
 } @else if (foundArtists().length === 0) {
-  <p>Keine Künstler gefunden.</p>
+  <p>{{ 'no-search-results' | transloco }}</p>
 } @else {
   <ul>
     @for (artist of foundArtists(); track artist.name) {

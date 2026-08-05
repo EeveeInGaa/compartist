@@ -1,15 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
-  effect,
+  computed,
   inject,
   signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ListItemComponent } from '../../components/list-item/list-item.component';
 import { SelectComponent } from '../../components/select/select.component';
-import { HttpClient } from '@angular/common/http';
 import { ArtistsService } from '../../utils/services/artists.service';
 import { Artist } from '../../utils/interfaces/artist.interface';
 import { Countries } from '../../utils/interfaces/countries.interface';
@@ -17,70 +15,60 @@ import {
   AvailableCountriesEnum,
   AvailableCountryCodesEnum,
 } from '../../utils/enums/available-countries.enum';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
-    selector: 'ca-artist-list',
-    imports: [ListItemComponent, SelectComponent],
-    providers: [HttpClient, TranslocoPipe],
-    templateUrl: './artist-list.component.html',
-    styleUrl: './artist-list.component.css',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ca-artist-list',
+  imports: [ListItemComponent, SelectComponent, TranslocoPipe],
+  templateUrl: './artist-list.component.html',
+  styleUrl: './artist-list.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArtistListComponent {
   private readonly artistService = inject(ArtistsService);
-  private readonly translocoService = inject(TranslocoService);
-  private readonly destroyRef = inject(DestroyRef);
   private readonly router = inject(Router);
 
   readonly AvailableCountries = AvailableCountriesEnum;
   readonly AvailableCountryCodes = AvailableCountryCodesEnum;
 
-  readonly artists = signal<Artist[]>([]);
-
-  /*Somehow, the translation for the Countries is not working; I still try to figure out why,
-  probably because they are not preloaded (since the app is quite small) */
   readonly countries = signal<Countries[]>([
     {
       countryCode: this.AvailableCountryCodes.Ger,
-      countryName: this.translocoService.translate(
-        `${this.AvailableCountries.Germany}`,
-      ),
+      translationKey: this.AvailableCountries.Germany,
     },
     {
       countryCode: this.AvailableCountryCodes.Nor,
-      countryName: this.translocoService.translate(
-        `${this.AvailableCountries.Norway}`,
-      ),
+      translationKey: this.AvailableCountries.Norway,
     },
     {
       countryCode: this.AvailableCountryCodes.Swe,
-      countryName: this.translocoService.translate(
-        `${this.AvailableCountries.Sweden}`,
-      ),
+      translationKey: this.AvailableCountries.Sweden,
     },
   ]);
 
   readonly selectedCountry = signal<string>(this.countries()[0].countryCode);
 
-  readonly getTopArtistsByCountry = effect(() => {
-    this.artistService
-      .getTopArtistsByCountry(this.selectedCountry())
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (response) => {
-          const topTenArtists = response.topartists.artist.slice(0, 10);
-          this.artists.set(topTenArtists);
-        },
-      });
+  private readonly artistsResource = rxResource({
+    params: () => this.selectedCountry(),
+    stream: ({ params: country }) =>
+      this.artistService
+        .getTopArtistsByCountry(country)
+        .pipe(map((response) => response.topartists.artist.slice(0, 10))),
+    defaultValue: [] as Artist[],
   });
 
-  selectCountry(country: string) {
+  readonly artists = this.artistsResource.value;
+  readonly isLoading = this.artistsResource.isLoading;
+  readonly loadError = this.artistsResource.error;
+  readonly hasArtists = computed(() => this.artists().length > 0);
+
+  selectCountry(country: string): void {
     this.selectedCountry.set(country);
   }
 
-  goToDetails(name: string) {
-    this.router.navigate(['artist-list/detail', name]);
+  goToDetails(name: string): void {
+    void this.router.navigate(['artist-list/detail', name]);
   }
 }

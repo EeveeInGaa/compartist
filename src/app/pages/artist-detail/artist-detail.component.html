@@ -1,4 +1,8 @@
-@if (artistDetails()) {
+@if (isLoading()) {
+  <p>{{ 'loading-artist-details' | transloco }}</p>
+} @else if (loadError()) {
+  <p>{{ 'artist-details-load-error' | transloco }}</p>
+} @else if (artistDetails()) {
   <h1>
     {{ artistDetails()!.artist.name }}
   </h1>
@@ -37,5 +41,10 @@
   <!-- innerHTML removes unsave content like script tags;
   a custom pipe with DOMPurify with explicit ALLOWED_TAGS and ALLOWED_ATTR could be used to sanitize values;
    for this specific use case innerHTML works fine -->
-  <p class="summary artist-summary" [innerHTML]="artistDetails()!.artist.bio.summary"></p>
+  <p
+    class="summary artist-summary"
+    [innerHTML]="artistDetails()!.artist.bio.summary"
+  ></p>
+} @else {
+  <p>{{ 'no-artist-details' | transloco }}</p>
 }
