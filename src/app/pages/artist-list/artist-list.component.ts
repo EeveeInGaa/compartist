@@ -3,9 +3,10 @@ import {
   Component,
   computed,
   inject,
+  input,
   signal,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListItemComponent } from '../../components/list-item/list-item.component';
 import { SelectComponent } from '../../components/select/select.component';
 import { ArtistsService } from '../../utils/services/artists.service';
@@ -29,6 +30,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 export class ArtistListComponent {
   private readonly artistService = inject(ArtistsService);
   private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
   readonly AvailableCountries = AvailableCountriesEnum;
   readonly AvailableCountryCodes = AvailableCountryCodesEnum;
@@ -48,7 +50,15 @@ export class ArtistListComponent {
     },
   ]);
 
-  readonly selectedCountry = signal<string>(this.countries()[0].countryCode);
+  readonly country = input('');
+
+  readonly selectedCountry = computed(() => {
+    const country = this.country();
+
+    return this.countries().some((item) => item.countryCode === country)
+      ? country
+      : this.countries()[0].countryCode;
+  });
 
   private readonly artistsResource = rxResource({
     params: () => this.selectedCountry(),
@@ -65,10 +75,10 @@ export class ArtistListComponent {
   readonly hasArtists = computed(() => this.artists().length > 0);
 
   selectCountry(country: string): void {
-    this.selectedCountry.set(country);
-  }
-
-  goToDetails(name: string): void {
-    void this.router.navigate(['artist-list/detail', name]);
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { country },
+      queryParamsHandling: 'merge',
+    });
   }
 }
