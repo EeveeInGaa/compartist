@@ -1,14 +1,16 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  effect,
+  debounced,
   inject,
   input,
 } from '@angular/core';
 import { ListItemComponent } from '../../components/list-item/list-item.component';
-import { SearchService } from '../../utils/services/search.service';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { Router } from '@angular/router';
+import { ArtistsService } from '../../utils/services/artists.service';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
+import { Artist } from '../../utils/interfaces/artist.interface';
 
 @Component({
   selector: 'ca-search-results',
@@ -18,20 +20,24 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchResultsComponent {
-  private readonly searchService = inject(SearchService);
-  private readonly router = inject(Router);
+  private readonly artistsService = inject(ArtistsService);
 
   readonly term = input('');
 
-  readonly foundArtists = this.searchService.foundArtists;
-  readonly isLoading = this.searchService.isLoading;
-  readonly searchError = this.searchService.error;
+  private readonly debouncedTerm = debounced(() => this.term().trim(), 250);
 
-  private readonly synchronizeSearchTerm = effect(() => {
-    this.searchService.setSearchTerm(this.term());
+  private readonly artistsResource = rxResource({
+    params: () => this.debouncedTerm.value() || undefined,
+    stream: ({ params: term }) =>
+      this.artistsService
+        .getArtistsBySearching(term)
+        .pipe(
+          map((response) => response.results.artistmatches.artist.slice(0, 20)),
+        ),
+    defaultValue: [] as Artist[],
   });
 
-  goToDetails(name: string): void {
-    void this.router.navigate(['artist-list/detail', name]);
-  }
+  readonly foundArtists = this.artistsResource.value;
+  readonly isLoading = this.artistsResource.isLoading;
+  readonly searchError = this.artistsResource.error;
 }
